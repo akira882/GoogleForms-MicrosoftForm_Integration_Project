@@ -36,8 +36,8 @@
 ### Step 1: リポジトリをクローン（30秒）
 
 ```bash
-git clone https://github.com/yourusername/gmo-forms-integration.git
-cd gmo-forms-integration
+git clone https://github.com/akira882/GoogleForms-MicrosoftForm_Integration_Project.git
+cd GoogleForms-MicrosoftForm_Integration_Project
 ```
 
 ### Step 2: 依存関係をインストール（1分）
@@ -212,7 +212,7 @@ A: 月間1TBクエリ、10GBストレージまで無料です。Phase 2の想定
 問題が発生した場合:
 
 1. [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) を確認
-2. [GitHub Issues](https://github.com/yourusername/gmo-forms-integration/issues) で報告
+2. [GitHub Issues](https://github.com/akira882/GoogleForms-MicrosoftForm_Integration_Project/issues) で報告
 3. Email: your-email@example.com
 
 ---

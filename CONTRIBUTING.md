@@ -135,4 +135,4 @@ flake8 output/06_implementation_samples/*.py
 
 ---
 
-**ご質問がある場合:** [GitHub Issues](https://github.com/yourusername/gmo-forms-integration/issues) または Email: your-email@example.com
+**ご質問がある場合:** [GitHub Issues](https://github.com/akira882/GoogleForms-MicrosoftForm_Integration_Project/issues) または Email: akira882@gmail.com

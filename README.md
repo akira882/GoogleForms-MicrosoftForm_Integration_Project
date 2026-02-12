@@ -17,7 +17,7 @@
 ```
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/yourusername/gmo-forms-integration)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/akira882/GoogleForms-MicrosoftForm_Integration_Project)
 [![Status](https://img.shields.io/badge/status-production--ready-green.svg)]()
 [![ROI](https://img.shields.io/badge/ROI-117%25-success.svg)]()
 [![Payback](https://img.shields.io/badge/payback-4.6_months-brightgreen.svg)]()
@@ -129,8 +129,8 @@ graph LR
 ### ステップ1: リポジトリをクローン
 
 ```bash
-git clone https://github.com/yourusername/gmo-forms-integration.git
-cd gmo-forms-integration
+git clone https://github.com/akira882/GoogleForms-MicrosoftForm_Integration_Project.git
+cd GoogleForms-MicrosoftForm_Integration_Project
 ```
 
 ### ステップ2: 依存関係をインストール
@@ -401,8 +401,8 @@ graph TB
 ## 📞 お問い合わせ
 
 - 📧 Email: akira882@gmail.com
-- 💬 GitHub Issues: [Issues](https://github.com/yourusername/gmo-forms-integration/issues)
-- 📖 Documentation: [Wiki](https://github.com/yourusername/gmo-forms-integration/wiki)
+- 💬 GitHub Issues: [Issues](https://github.com/akira882/GoogleForms-MicrosoftForm_Integration_Project/issues)
+- 📖 Documentation: [Wiki](https://github.com/akira882/GoogleForms-MicrosoftForm_Integration_Project/wiki)
 
 ---
 

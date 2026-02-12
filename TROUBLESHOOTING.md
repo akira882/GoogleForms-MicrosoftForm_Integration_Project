@@ -306,7 +306,7 @@ jst_time = datetime.fromisoformat(submitted_at).astimezone(jst)
 
 ### サポートチャンネル
 
-1. **GitHub Issues:** https://github.com/yourusername/gmo-forms-integration/issues
+1. **GitHub Issues:** https://github.com/akira882/GoogleForms-MicrosoftForm_Integration_Project/issues
 2. **Email:** your-email@example.com
 3. **ドキュメント:** [README.md](./README.md)
 
