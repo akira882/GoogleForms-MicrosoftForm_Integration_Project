@@ -15,7 +15,7 @@
 - [ ] プロジェクトチーム結成（アーキテクト1名、エンジニア1〜2名）
 - [ ] Google Cloud プロジェクト作成権限申請
 - [ ] Make.comアカウント作成（Proプラン）
-- [ ] Slackチャンネル作成（#gmo-form-integration）
+- [ ] Slackチャンネル作成（#client-form-integration）
 
 #### Day 2-3: Google Forms API接続
 - [ ] Google Cloud Console でForms API有効化
@@ -106,7 +106,7 @@
 ### Month 2: BigQuery設定とETL
 
 #### Week 5: BigQueryプロジェクト設定
-- [ ] BigQueryデータセット作成（`gmo_unified_forms`）
+- [ ] BigQueryデータセット作成（`client_unified_forms`）
 - [ ] IAM Role設定（HR、エンジニア、経営層）
 - [ ] VPCピアリング設定
 - [ ] 監査ログ設定
@@ -131,16 +131,16 @@
 - [ ] ダッシュボード4: フォーム完了率分析
 - [ ] ダッシュボード5: 部門別集計
 - [ ] ダッシュボード6: データ品質スコア
-- [ ] ダッシュボード7: GMO jobbi連携
+- [ ] ダッシュボード7: Client jobbi連携
 
 #### フィルター・自動化設定
 - [ ] 期間フィルター設定
 - [ ] 企業フィルター設定
 - [ ] 自動レポート配信設定（週次/月次）
 
-### Month 5: GMO jobbi連携
+### Month 5: Client jobbi連携
 
-- [ ] GMO jobbi データスキーマ調査
+- [ ] Client jobbi データスキーマ調査
 - [ ] BigQuery接続確認
 - [ ] 連携ダッシュボード構築
 - [ ] CPA（Cost Per Application）算出
@@ -158,7 +158,7 @@
 - [ ] クエリ実行速度: 5秒以内（90%）
 - [ ] Looker Studio アクティブユーザー: 50名以上
 - [ ] ダッシュボード作成数: 7個
-- [ ] GMO jobbi連携成功率: 95%以上
+- [ ] Client jobbi連携成功率: 95%以上
 
 ---
 
@@ -202,7 +202,7 @@
 - [ ] データ品質スコア: 90点以上
 - [ ] HR Open Standards準拠率: 100%（新規データ）
 - [ ] グループ横断展開企業数: 10社以上
-- [ ] GMO AIブースト支援金獲得: 500万円
+- [ ] Client AIブースト支援金獲得: 500万円
 
 ---
 

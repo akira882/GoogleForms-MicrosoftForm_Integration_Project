@@ -2,7 +2,7 @@
 
 **提出日:** 2026年02月12日  
 **作成者:** 小清水（Akira Koshimizu）  
-**対象:** GMO Tech株式会社 採用責任者・技術決裁者様
+**対象:** Client株式会社 採用責任者・技術決裁者様
 
 ---
 
@@ -48,7 +48,7 @@ Microsoft Forms Graph APIが未提供であるという「技術的な行き止�
 
 ### Phase 3: AIによる高度化（Month 2〜）
 - [ ] **AI Integration**: Claude API を用いたフリー入力項目の意味解析実装
-- [ ] **Scale Out**: GMOグループ内他10社への横展開パイロット開始
+- [ ] **Scale Out**: Clientグループ内他10社への横展開パイロット開始
 
 ---
 

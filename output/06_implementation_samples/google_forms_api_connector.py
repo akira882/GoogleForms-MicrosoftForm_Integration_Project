@@ -151,7 +151,7 @@ class GoogleFormsConnector:
             'respondent_email': respondent_email,
             'responses': responses_list,
             'metadata': {
-                'company': 'GMO Tech',  # Make.comで動的に設定
+                'company': 'Client',  # Make.comで動的に設定
                 'department': '',
                 'integration_timestamp': '',  # Make.comで設定
                 'data_version': 'v1.1'

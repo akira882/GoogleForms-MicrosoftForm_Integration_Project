@@ -35,7 +35,7 @@
 
 ## 🎯 30秒エレベーターピッチ
 
-GMOグループ110社が抱える**「Google Forms と Microsoft Forms のデータ統合困難」問題**を、**Make.com + Power Automate + BigQuery**で解決。
+Clientグループ110社が抱える**「Google Forms と Microsoft Forms のデータ統合困難」問題**を、**Make.com + Power Automate + BigQuery**で解決。
 
 - ⚡ **2〜4週間でM&A企業を統合**（従来6〜12ヶ月 → 95%削減）
 - 💰 **年間7,200万円の削減**（手動作業18,000時間削減）
@@ -51,7 +51,7 @@ GMOグループ110社が抱える**「Google Forms と Microsoft Forms のデー
 ### 問題の本質
 
 ```
-[GMO Tech]              [新規M&A企業A]         [新規M&A企業B]
+[Client]              [新規M&A企業A]         [新規M&A企業B]
   Google Forms    +    Microsoft Forms    +    Google Forms
       ↓                      ↓                      ↓
    手動コピペ            手動コピペ             手動コピペ
@@ -169,7 +169,7 @@ python output/06_implementation_samples/google_forms_api_connector.py \
   - 経営ダッシュボード
   - HRオペレーションダッシュボード
   - データ品質ダッシュボード
-  - GMO jobbi 連携ダッシュボード
+  - Client jobbi 連携ダッシュボード
 - ✅ 自動レポート配信（週次/月次）
 
 ### 🤖 AI自動化
@@ -183,7 +183,7 @@ python output/06_implementation_samples/google_forms_api_connector.py \
 
 - ✅ 改正個人情報保護法（2024年4月）完全準拠
 - ✅ 個人情報の自動匿名化（SHA-256ハッシュ）
-- ✅ GMOトラスト・ログイン SSO連携
+- ✅ Clientトラスト・ログイン SSO連携
 - ✅ 監査ログ3年保存
 - ✅ MFA（多要素認証）必須化
 
@@ -217,7 +217,7 @@ python output/06_implementation_samples/google_forms_api_connector.py \
 ### ROI回収期間
 
 - Phase 1のみ: **11ヶ月**
-- 全Phase（GMO AIブースト支援金活用）: **4.6ヶ月**
+- 全Phase（Client AIブースト支援金活用）: **4.6ヶ月**
 
 詳細は [output/03_roi_analysis.md](./output/03_roi_analysis.md) を参照。
 
@@ -247,7 +247,7 @@ graph TB
 
     subgraph "分析・可視化"
         H[Looker Studio]
-        I[GMO jobbi]
+        I[Client jobbi]
     end
 
     subgraph "AI処理"
@@ -332,7 +332,7 @@ graph TB
 
 - [x] BigQueryテーブル設計
 - [x] Looker Studioダッシュボード設計
-- [x] GMO jobbi 連携設計
+- [x] Client jobbi 連携設計
 - [ ] 本番運用開始（2026年4月予定）
 
 ### Phase 3: AI自動化（6〜12ヶ月） 📋 計画中
@@ -348,7 +348,7 @@ graph TB
 
 ### 他ソリューションとの比較
 
-| ソリューション | 初期コスト | 月額コスト | 統合期間 | GMO親和性 | 推奨度 |
+| ソリューション | 初期コスト | 月額コスト | 統合期間 | Client親和性 | 推奨度 |
 |------------|----------|-----------|---------|----------|--------|
 | **この提案** | 350〜750万円 | $25〜$50 | 2〜4週間 | ★★★★★ | ⭐⭐⭐⭐⭐ |
 | JotForm全面移行 | 500〜800万円 | $100〜$200 | 6〜12ヶ月 | ★☆☆☆☆ | ⭐☆☆☆☆ |
@@ -360,8 +360,8 @@ graph TB
 1. **技術的実現可能性95%** - Microsoft Forms API未対応をPower Automateで回避
 2. **低リスク** - 段階的実装、フォールバック設計
 3. **高ROI** - 4.6ヶ月で投資回収
-4. **GMOエコシステム整合** - Google Workspace販売パートナー、GMO jobbi連携
-5. **AI活用方針整合** - GMO AIブースト支援金活用可能
+4. **Clientエコシステム整合** - Google Workspace販売パートナー、Client jobbi連携
+5. **AI活用方針整合** - Client AIブースト支援金活用可能
 
 ---
 
@@ -410,14 +410,14 @@ graph TB
 
 - **Gartner** - データ品質コスト調査データ
 - **Forrester** - 従業員時間調査データ
-- **GMO Tech** - 2024年度AI削減実績データ
+- **Client** - 2024年度AI削減実績データ
 - **Anthropic** - Claude API提供
 
 ---
 
 <div align="center">
 
-**⚡ GMOグループのM&A統合を2週間で実現 ⚡**
+**⚡ ClientグループのM&A統合を2週間で実現 ⚡**
 
 Made with ❤️ by Claude Code (Sonnet 4.5)
 

@@ -25,7 +25,7 @@ class SchemaDataNormalizer:
             'respondent_email': data.get('respondent_email', ''),
             'responses': data.get('responses', []),
             'metadata': {
-                'company': data.get('metadata', {}).get('company', 'GMO Tech'),
+                'company': data.get('metadata', {}).get('company', 'Client'),
                 'department': data.get('metadata', {}).get('department', ''),
                 'integration_timestamp': datetime.utcnow().isoformat(),
                 'data_version': 'v1.1'
@@ -52,7 +52,7 @@ class SchemaDataNormalizer:
                 for q in data.get('questions', [])
             ],
             'metadata': {
-                'company': 'GMO Tech',
+                'company': 'Client',
                 'department': '',
                 'integration_timestamp': datetime.utcnow().isoformat(),
                 'data_version': 'v1.1'
@@ -66,7 +66,7 @@ if __name__ == "__main__":
         "response_id": "google-123",
         "form_id": "form-abc",
         "form_title": "採用アンケート",
-        "respondent_email": "test@gmo-tech.test",
+        "respondent_email": "test@client-tech.test",
         "responses": [{"q": "志望動機", "a": "AI活用に惹かれました"}]
     }
     print(json.dumps(normalizer.normalize_google_forms(sample_data), indent=2, ensure_ascii=False))

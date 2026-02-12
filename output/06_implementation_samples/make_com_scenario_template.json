@@ -1,5 +1,5 @@
 {
-  "name": "GMO M&A Enterprise Integration Template v1.0",
+  "name": "Client M&A Enterprise Integration Template v1.0",
   "flow": [
     {
       "id": 1,
@@ -32,7 +32,7 @@
           "respondent_email": "{{1.respondent_email}}",
           "responses": "{{1.responses}}",
           "metadata": {
-            "company": "GMO_COMPANY_NAME_VARIABLE",
+            "company": "Client_COMPANY_NAME_VARIABLE",
             "department": "",
             "integration_timestamp": "{{now}}",
             "data_version": "v1.1"
@@ -80,7 +80,7 @@
       "module": "slack:sendMessage",
       "version": 1,
       "parameters": {
-        "channel": "#gmo-form-integration-alerts"
+        "channel": "#client-form-integration-alerts"
       },
       "mapper": {
         "text": "✅ New form response integrated successfully!\nForm: {{2.unified_data.form_title}}\nCompany: {{2.unified_data.metadata.company}}\nResponse ID: {{2.unified_data.response_id}}"
@@ -109,7 +109,7 @@
       "module": "slack:sendMessage",
       "version": 1,
       "parameters": {
-        "channel": "#gmo-form-integration-alerts"
+        "channel": "#client-form-integration-alerts"
       },
       "mapper": {
         "text": "⚠️ Error integrating form response!\nForm: {{2.unified_data.form_title}}\nError: {{3.error.message}}"

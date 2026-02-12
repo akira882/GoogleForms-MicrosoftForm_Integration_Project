@@ -54,7 +54,7 @@ pip install -r requirements.txt
 ### Step 3: Google Forms API認証設定（2分）
 
 1. **Google Cloud Console** (https://console.cloud.google.com/) にアクセス
-2. 新しいプロジェクトを作成: `gmo-forms-integration-test`
+2. 新しいプロジェクトを作成: `client-forms-integration-test`
 3. **APIとサービス > ライブラリ** から「Google Forms API」を有効化
 4. **認証情報** > **認証情報を作成** > **サービスアカウント**
    - サービスアカウント名: `forms-connector`
@@ -113,7 +113,7 @@ python output/06_implementation_samples/google_forms_api_connector.py \
       }
     ],
     "metadata": {
-      "company": "GMO Tech",
+      "company": "Client",
       "data_version": "v1.1"
     }
   }
