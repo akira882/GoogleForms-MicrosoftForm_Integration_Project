@@ -6,7 +6,7 @@
 
 **全体期間:** 1年間（Phase 1: 1ヶ月、Phase 2: 3〜6ヶ月、Phase 3: 6〜12ヶ月）
 
-**総投資額:** 550〜950万円（GMO Tech AIブースト支援金活用で実質350〜750万円）
+**総投資額:** 550〜950万円（Client AIブースト支援金活用で実質350〜750万円）
 
 **期待効果:** 3年間累計純利益 2,500万円、年間削減時間 18,000時間
 
@@ -16,7 +16,7 @@
 
 \`\`\`mermaid
 gantt
-    title GMO Tech フォームデータ統合プロジェクト - 1年間ロードマップ
+    title Client フォームデータ統合プロジェクト - 1年間ロードマップ
     dateFormat YYYY-MM-DD
     section Phase 1: クイックウィン施策
         環境構築・権限取得           :p1_1, 2026-03-01, 7d
@@ -31,7 +31,7 @@ gantt
         ETLパイプライン構築         :p2_2, after p2_1, 14d
         データ移行テスト            :p2_3, after p2_2, 7d
         Looker Studio ダッシュボード構築 :p2_4, after p2_3, 21d
-        GMO Tech jobbi連携テスト         :p2_5, after p2_4, 14d
+        Client jobbi連携テスト         :p2_5, after p2_4, 14d
         グループ横断レポート整備     :p2_6, after p2_5, 14d
     section Phase 3: AI自動化
         Claude API環境構築          :p3_1, 2026-08-01, 7d
@@ -63,7 +63,7 @@ gantt
 #### Week 1（Day 1〜7）: 環境構築と権限取得
 
 **Day 1: プロジェクトキックオフ**
-- GMO Tech社内イントロダクション
+- Client社内イントロダクション
 - Google Cloud プロジェクト作成権限申請
 - Make.comアカウント作成
 
@@ -132,7 +132,7 @@ gantt
 ### 目的
 - BigQuery データウェアハウスへ移行
 - Looker Studio で高度な可視化ダッシュボードを構築
-- GMO Tech jobbi とのデータ連携
+- Client jobbi とのデータ連携
 
 ### 期間
 - **Month 2〜6（4ヶ月）**
@@ -168,10 +168,10 @@ gantt
 6. データ品質スコア
 7. 求人広告効果 × 応募者データ クロス分析
 
-#### Month 5: GMO Tech jobbi連携
+#### Month 5: Client jobbi連携
 
 **Week 17-18: データ調査**
-- GMO Tech jobbi スキーマ調査
+- Client jobbi スキーマ調査
 
 **Week 19-20: 連携ダッシュボード構築**
 - CPA（Cost Per Application）算出
@@ -199,7 +199,7 @@ gantt
 ### 目的
 - Claude APIを活用したデータ自動正規化
 - HR Open Standards準拠スキーマへの進化
-- GMOインターネットグループ横断のフォームガバナンスポリシー展開
+- Clientグループ横断のフォームガバナンスポリシー展開
 
 ### 期間
 - **Month 7〜12（6ヶ月）**
@@ -207,7 +207,7 @@ gantt
 ### 予算
 - **追加投資:** 100〜200万円（1人月）
 - **月額コスト:** $50〜$100
-- **GMO Tech AIブースト支援金:** 最大500万円
+- **Client AIブースト支援金:** 最大500万円
 
 ### 詳細スケジュール
 
@@ -221,7 +221,7 @@ gantt
 - 匿名化アルゴリズム実装
 - 法務部門レビュー
 
-**Week 28: GMO Tech AIブースト支援金 申請**
+**Week 28: Client AIブースト支援金 申請**
 - 申請書類作成・提出
 
 #### Month 8〜9: 自動正規化パイプライン実装
@@ -256,7 +256,7 @@ gantt
 - 法務部門・経営層承認
 
 **Week 45-46: グループ横断展開**
-- GMOインターネットグループ110社へアナウンス
+- Clientグループ110社へアナウンス
 - 10社の追加統合
 
 **Week 47-48: Phase 3完了**

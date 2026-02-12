@@ -156,7 +156,7 @@ time.sleep(0.2)  # 各リクエスト間に200ms待機
 
 **解決策:**
 ```sql
-CREATE TABLE `gmo_unified_forms.responses`
+CREATE TABLE `client_unified_forms.responses`
 (
   response_id STRING NOT NULL,
   form_source STRING NOT NULL,
@@ -177,10 +177,10 @@ CLUSTER BY form_source;
 **解決策:**
 ```sql
 -- ❌ 悪い例（全データスキャン）
-SELECT * FROM `gmo_unified_forms.responses`;
+SELECT * FROM `client_unified_forms.responses`;
 
 -- ✅ 良い例（パーティション指定）
-SELECT * FROM `gmo_unified_forms.responses`
+SELECT * FROM `client_unified_forms.responses`
 WHERE DATE(submitted_at) = '2026-02-12';
 ```
 
@@ -259,7 +259,7 @@ prompt = f"""
 - BigQueryで `MERGE` 文を使用
 
 ```sql
-MERGE `gmo_unified_forms.responses` T
+MERGE `client_unified_forms.responses` T
 USING (SELECT * FROM UNNEST(@new_data)) S
 ON T.response_id = S.response_id
 WHEN NOT MATCHED THEN INSERT ...

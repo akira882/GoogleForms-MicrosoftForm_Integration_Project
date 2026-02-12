@@ -103,7 +103,7 @@ python output/06_implementation_samples/google_forms_api_connector.py \
     "form_id": "1A2B3C4D5E6F",
     "form_title": "テスト応募フォーム",
     "submitted_at": "2026-02-12T10:30:00Z",
-    "respondent_email": "test@gmo-tech.test",
+    "respondent_email": "test@client-tech.test",
     "responses": [
       {
         "question_id": "q1",
@@ -113,7 +113,7 @@ python output/06_implementation_samples/google_forms_api_connector.py \
       }
     ],
     "metadata": {
-      "company": "GMO Tech",
+      "company": "Client",
       "data_version": "v1.1"
     }
   }
