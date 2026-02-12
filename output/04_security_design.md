@@ -164,7 +164,7 @@ class DataAnonymizer:
 anonymizer = DataAnonymizer()
 original_data = {
     "name": "山田太郎",
-    "email": "sato@client-tech.test",
+    "email": "sato@gmo-tech.test",
     "phone": "090-1234-5678",
     "address": "東京都渋谷区桜丘町1-1"
 }
@@ -191,13 +191,13 @@ anonymized_data = anonymizer.anonymize_pii(original_data)
 
 ---
 
-## 4. Clientトラスト・ログイン SSO連携設計
+## 4. GMO Techトラスト・ログイン SSO連携設計
 
 ### 4.1 アクセス制御設計
 
 ```mermaid
 graph TD
-    A[ユーザー] -->|1. Clientトラスト・ログインでSSO認証| B[Google Cloud Identity]
+    A[ユーザー] -->|1. GMO Techトラスト・ログインでSSO認証| B[Google Cloud Identity]
     B -->|2. SAML連携| C[BigQuery IAM]
     C -->|3. Role確認| D{役割判定}
     
@@ -233,7 +233,7 @@ graph TD
 - Make.com管理画面: 管理者のみ必須
 
 **MFA方式:**
-- Clientトラスト・ログイン経由: Google Authenticator、SMS認証
+- GMO Techトラスト・ログイン経由: Google Authenticator、SMS認証
 - 予備手段: セキュリティキー（YubiKey）
 
 ---
@@ -247,9 +247,9 @@ graph TD
 audit_log_schema:
   event_type: string  # data_access, data_export, schema_change, user_login
   timestamp: timestamp
-  user_id: string  # user@client.jp
+  user_id: string  # user@gmo.jp
   user_role: string  # HR, Engineer, Executive
-  resource: string  # bigquery.client_unified_forms.responses
+  resource: string  # bigquery.gmo_unified_forms.responses
   action: string  # SELECT, INSERT, UPDATE, DELETE, EXPORT
   query: string  # 実行されたSQLクエリ（SELECT文のみ）
   ip_address: string
@@ -267,7 +267,7 @@ audit_log_schema:
 | データアクセスログ | 3年 | Cloud Logging | 監査部門のみ |
 | データエクスポートログ | 5年 | Cloud Storage（Archive） | 監査部門 + 法務部門 |
 | スキーマ変更ログ | 永久保存 | Cloud Storage | データエンジニア + 監査部門 |
-| ログインログ | 1年 | Clientトラスト・ログイン | セキュリティ部門 |
+| ログインログ | 1年 | GMO Techトラスト・ログイン | セキュリティ部門 |
 
 ### 5.3 データ・リネージ（データの系譜）とトレーサビリティ
 
@@ -397,21 +397,21 @@ graph TD
 -- BigQuery scheduled queryで毎日実行
 
 -- 1年以上前の不採用者データを削除
-DELETE FROM `client_unified_forms.responses`
+DELETE FROM `gmo_unified_forms.responses`
 WHERE 
   DATE(submitted_at) < DATE_SUB(CURRENT_DATE(), INTERVAL 1 YEAR)
   AND metadata.employment_status = 'rejected';
 
 -- 退職後3年以上経過した採用者データを削除（要手動確認）
 -- 実際には手動削除が安全なため、該当データのリストのみ作成
-CREATE OR REPLACE TABLE `client_unified_forms.data_to_delete` AS
+CREATE OR REPLACE TABLE `gmo_unified_forms.data_to_delete` AS
 SELECT 
   response_id,
   metadata.name_id,
   metadata.termination_date,
   DATE_DIFF(CURRENT_DATE(), metadata.termination_date, YEAR) as years_since_termination
 FROM 
-  `client_unified_forms.responses`
+  `gmo_unified_forms.responses`
 WHERE 
   DATE_DIFF(CURRENT_DATE(), metadata.termination_date, YEAR) >= 3
   AND metadata.employment_status = 'hired';

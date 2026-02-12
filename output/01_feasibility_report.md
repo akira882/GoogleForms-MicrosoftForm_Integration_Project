@@ -2,7 +2,7 @@
 
 ## エグゼクティブサマリー
 
-本レポートは、Clientが抱える「Google Forms × Microsoft Forms ハイブリッドデータ統合」の課題に対する技術的実現可能性を詳細に検証したものです。
+本レポートは、GMO Techが抱える「Google Forms × Microsoft Forms ハイブリッドデータ統合」の課題に対する技術的実現可能性を詳細に検証したものです。
 
 **結論: 実現可能性 95%**
 
@@ -78,7 +78,7 @@ graph TB
 
     subgraph "分析層"
         I[Looker Studio]
-        J[Client jobbi 連携]
+        J[GMO Tech jobbi 連携]
     end
 
     A -->|OAuth 2.0| C
@@ -202,7 +202,7 @@ graph TB
       "properties": {
         "company": {
           "type": "string",
-          "description": "M&A企業識別子（例: Client, Client Internet）"
+          "description": "M&A企業識別子（例: GMO Tech, GMO Tech Internet）"
         },
         "department": {
           "type": "string",
@@ -233,7 +233,7 @@ graph TB
 | API/サービス | レート制限 | 対策 |
 |------------|----------|------|
 | Google Forms API | 600 requests/分/プロジェクト | Make.com でスロットリング設定（1秒あたり5リクエスト） |
-| Power Automate | Microsoft 365 E3: 2,000 runs/日 | 1日あたり2,000フォーム応答まで対応可能（Client規模では十分） |
+| Power Automate | Microsoft 365 E3: 2,000 runs/日 | 1日あたり2,000フォーム応答まで対応可能（GMO Tech規模では十分） |
 | Make.com Pro | 10,000 operations/月 | 月間10,000フォーム応答まで対応（超過時はBusinessプラン $99/月に移行） |
 | BigQuery | 無料枠: 月間1TBクエリ | パーティション設計により実質無料枠内で運用可能 |
 
@@ -272,7 +272,7 @@ graph TD
 
 ```json
 {
-  "channel": "#client-form-integration-alerts",
+  "channel": "#gmo-form-integration-alerts",
   "username": "Make.com Alert Bot",
   "icon_emoji": ":warning:",
   "attachments": [
@@ -304,7 +304,7 @@ graph TD
 
 ## 4. 5つの解決策の技術スタック比較
 
-| 解決策 | 技術スタック | 難易度 | メンテナンス | スケーラビリティ | Client親和性 | 推奨度 |
+| 解決策 | 技術スタック | 難易度 | メンテナンス | スケーラビリティ | GMO Tech親和性 | 推奨度 |
 |--------|------------|--------|------------|---------------|----------|--------|
 | ① Make.com + Power Automate | Make.com (iPaaS), Power Automate, Google Sheets | ★★☆☆☆ | ★★★★☆ | ★★★★★ | ★★★★☆ | ★★★★★ |
 | ② BigQuery + Looker Studio | BigQuery, Looker Studio, Data Transfer Service | ★★★☆☆ | ★★★★★ | ★★★★★ | ★★★★★ | ★★★★★ |
@@ -320,7 +320,7 @@ graph TD
 - ノーコード/ローコードで実装可能（エンジニア以外も運用可能）
 - Microsoft Forms、Google Forms 両方をネイティブサポート
 - 月額$10〜$25と低コスト
-- Clientグループの既存インフラ（Microsoft 365）を活用
+- GMOインターネットグループの既存インフラ（Microsoft 365）を活用
 
 **デメリット:**
 - Power Automateへの依存（ただしフォールバック設計で対応）
@@ -347,17 +347,17 @@ Scenario 2: Microsoft Forms → Google Sheets
 **メリット:**
 - エンタープライズグレードのデータウェアハウス
 - Looker Studioで高度な可視化が可能
-- Clientが Google Workspace販売パートナーのため技術的優位性
+- GMO Techが Google Workspace販売パートナーのため技術的優位性
 - スケーラビリティが非常に高い（ペタバイト級まで対応）
 
 **デメリット:**
-- SQL知識が必要（ただしClientにはSQLスキル保有者が多いと想定）
+- SQL知識が必要（ただしGMO TechにはSQLスキル保有者が多いと想定）
 - 初期設計に1〜2週間必要
 
 **技術的詳細:**
 ```sql
 -- BigQueryテーブル定義例
-CREATE TABLE `client_unified_forms.responses`
+CREATE TABLE `gmo_unified_forms.responses`
 (
   response_id STRING NOT NULL,
   form_source STRING NOT NULL,
@@ -380,10 +380,10 @@ CLUSTER BY form_source, metadata.company;
 - JotForm APIが充実
 
 **デメリット:**
-- Clientグループ全体のフォームをJotFormに移行するコストが膨大
+- GMOインターネットグループ全体のフォームをJotFormに移行するコストが膨大
 - 既存のGoogle Forms/Microsoft Formsデータの移行が困難
 - JotForm月額コスト: $99〜$199（多数のフォームで高額化）
-- Clientグループの既存インフラを活用できない
+- GMOインターネットグループの既存インフラを活用できない
 
 **結論:** 現実的でないため非推奨
 
@@ -392,11 +392,11 @@ CLUSTER BY form_source, metadata.company;
 **メリット:**
 - データ品質の自動改善（表記ゆれ、欠損値補完）
 - フォーム質問の自動マッピング（「氏名」「お名前」「名前」を統一）
-- ClientグループのAI活用方針と完全整合
-- Client AIブースト支援金（最大500万円）の活用可能
+- GMOインターネットグループのAI活用方針と完全整合
+- GMO Tech AIブースト支援金（最大500万円）の活用可能
 
 **デメリット:**
-- Claude API コスト: 月間$50〜$100（ただしClient AIブースト支援金でカバー可能）
+- Claude API コスト: 月間$50〜$100（ただしGMO Tech AIブースト支援金でカバー可能）
 - 実装難易度が高い（Python開発スキル必須）
 - 個人情報匿名化設計が必須
 
@@ -444,7 +444,7 @@ mapped = auto_map_question("お名前を教えてください", standard_schema)
 **デメリット:**
 - Airtableは主にプロジェクト管理ツールであり、データ分析基盤としては不十分
 - BigQueryに比べてスケーラビリティが低い
-- Clientグループの既存インフラとの親和性が低い
+- GMOインターネットグループの既存インフラとの親和性が低い
 
 **結論:** BigQueryの代替案としては不十分、Phase 1の簡易版としてのみ検討可
 
@@ -460,7 +460,7 @@ mapped = auto_map_question("お名前を教えてください", standard_schema)
 | Google Forms API変更 | 低 (5%) | 中 | 公式SDKの使用、バージョン固定 | v1 APIは長期サポート確約済み |
 | BigQueryコスト超過 | 中 (20%) | 低 | パーティション設計、無料枠監視 | 予算アラート設定 |
 | データ品質問題 | 高 (60%) | 中 | Phase 3でClaude API自動修正 | 人間による定期レビュー |
-| セキュリティ侵害 | 低 (5%) | 高 | IAM、暗号化、監査ログ | Clientトラスト・ログインSSO |
+| セキュリティ侵害 | 低 (5%) | 高 | IAM、暗号化、監査ログ | GMO Techトラスト・ログインSSO |
 | 個人情報保護法違反 | 低 (10%) | 高 | 法務部門確認、DPA締結 | 個人情報匿名化設計 |
 
 ### リスク対策の詳細
@@ -522,37 +522,37 @@ graph LR
 
 **定性的条件:**
 - ✅ Phase 2の運用が安定（月次メンテナンス2時間以内）
-- ✅ Claude API 予算確保（Client AIブースト支援金申請承認）
+- ✅ Claude API 予算確保（GMO Tech AIブースト支援金申請承認）
 - ✅ 個人情報匿名化設計の法務部門承認
 
 ---
 
-## 7. Clientグループとの技術的整合性
+## 7. GMOインターネットグループとの技術的整合性
 
 ### 7.1 既存インフラとの親和性
 
-| Clientインフラ | 統合方法 | メリット |
+| GMO Techインフラ | 統合方法 | メリット |
 |-----------|---------|---------|
 | Google Workspace | Google Forms API, BigQuery | ネイティブ統合、追加コストなし |
 | Microsoft 365 | Power Automate | E3/E5プランに含まれる、追加コストなし |
-| Clientトラスト・ログイン | SAML SSO連携 | 統一認証、セキュリティ強化 |
-| Client jobbi | BigQuery連携 | 求人広告効果測定とのクロス分析 |
+| GMO Techトラスト・ログイン | SAML SSO連携 | 統一認証、セキュリティ強化 |
+| GMO Tech jobbi | BigQuery連携 | 求人広告効果測定とのクロス分析 |
 
-### 7.2 ClientのAI活用実績との整合性
+### 7.2 GMO TechのAI活用実績との整合性
 
-**Client 2024年度実績:**
+**GMO Tech 2024年度実績:**
 - AI活用率: 95%
 - AI削減時間: 年間33,624時間
 - 主なAIツール: Claude, ChatGPT, GitHub Copilot
 
 **この提案の貢献:**
-- Phase 3でClaude APIを活用 → ClientグループAI戦略と整合
+- Phase 3でClaude APIを活用 → GMOインターネットグループAI戦略と整合
 - 年間5,000〜10,000時間の追加削減見込み
-- Client AIブースト支援金（最大500万円）の活用
+- GMO Tech AIブースト支援金（最大500万円）の活用
 
 ### 7.3 Google Workspace販売パートナーとしての優位性
 
-Clientは Google Workspace販売パートナーであるため:
+GMO Techは Google Workspace販売パートナーであるため:
 
 - **技術的優位性:** BigQuery, Looker Studio の深い知見
 - **コスト優位性:** パートナー割引の可能性
@@ -571,12 +571,12 @@ Clientは Google Workspace販売パートナーであるため:
 3. ✅ **Make.comは実績あるiPaaS:** 80万ユーザー、Fortune 500の20%が使用
 4. ✅ **BigQuery/Looker Studioはエンタープライズグレード:** スケーラビリティ、信頼性が非常に高い
 5. ✅ **フォールバック設計が確立:** リスクを最小化する代替手段を準備済み
-6. ✅ **Clientグループの既存インフラを活用:** 追加コストを最小化
+6. ✅ **GMOインターネットグループの既存インフラを活用:** 追加コストを最小化
 
 **残る5%の不確実性:**
 
 - Power Automateの予期しない仕様変更（ただし公式製品のため可能性は極めて低い）
-- Clientグループ内の政治的要因（既存システムとの競合等）
+- GMOインターネットグループ内の政治的要因（既存システムとの競合等）
 
 ### 推奨実装順序
 
@@ -589,7 +589,7 @@ Clientは Google Workspace販売パートナーであるため:
 1. **Week 1:** 環境構築、権限取得、技術検証
 2. **Week 2-4:** Phase 1実装、パイロット運用、本番展開
 3. **Month 2-3:** Phase 1安定化、Phase 2準備
-4. **Month 4-6:** Phase 2実装、Client jobbi連携
+4. **Month 4-6:** Phase 2実装、GMO Tech jobbi連携
 
 ---
 

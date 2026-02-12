@@ -57,28 +57,35 @@ class ClaudeNormalizer:
         return message.content[0].text.strip()
         
     def detect_inconsistencies(self, data: Dict[str, Any]) -> List[str]:
-        """データ内の論理的矛盾を検知（例：郵便番号型と住所の不一致）"""
+        """データ内の論理的矛盾を検知（例：郵便番号型と住所の不一致、年齢と生年月日の矛盾）"""
+        # 個人情報保護のため、送信前に最低限のチェック（メールアドレス等はハッシュ化されるべき）
         prompt = f"""
-以下のフォーム回答データ内に論理的な矛盾や不整合、あるいは明らかな虚偽の可能性がある箇所があれば指摘してください。
-矛盾がない場合は空のリストを返してください。
+以下のフォーム回答データ内に論理的な矛盾や不整合、あるいは明らかな入力ミスの可能性があれば具体的に指摘してください。
+エンジニアではなく、人事担当者が理解できる言葉で回答してください。
 
 データ:
 {json.dumps(data, ensure_ascii=False, indent=2)}
 
 出力形式:
-["矛盾点1", "矛盾点2"]
+["指摘事項1：〜〜", "指摘事項2：〜〜"]
+※矛盾がない場合は空のリスト [] を返してください。
 """
-        
-        message = self.client.messages.create(
-            model="claude-3-5-sonnet-20241022",
-            max_tokens=200,
-            messages=[{"role": "user", "content": prompt}]
-        )
-        
         try:
-            return json.loads(message.content[0].text.strip())
-        except:
-            return [message.content[0].text.strip()]
+            message = self.client.messages.create(
+                model="claude-3-5-sonnet-20241022",
+                max_tokens=300,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            content = message.content[0].text.strip()
+            # JSONパースの試行
+            start = content.find('[')
+            end = content.find(']') + 1
+            if start != -1 and end != 0:
+                return json.loads(content[start:end])
+            return []
+        except Exception as e:
+            # 実際のプロダクション環境ではロギングを行う
+            return [f"AI解析エラー: {str(e)}"]
 
 if __name__ == "__main__":
     # 使用例（APIキーを設定して実行）

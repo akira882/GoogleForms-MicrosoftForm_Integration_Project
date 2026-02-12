@@ -25,7 +25,7 @@ class SchemaDataNormalizer:
             'respondent_email': data.get('respondent_email', ''),
             'responses': data.get('responses', []),
             'metadata': {
-                'company': data.get('metadata', {}).get('company', 'Client'),
+                'company': data.get('metadata', {}).get('company', 'GMO TECH'),
                 'department': data.get('metadata', {}).get('department', ''),
                 'integration_timestamp': datetime.utcnow().isoformat(),
                 'data_version': 'v1.1'
@@ -52,7 +52,7 @@ class SchemaDataNormalizer:
                 for q in data.get('questions', [])
             ],
             'metadata': {
-                'company': 'Client',
+                'company': 'GMO TECH',
                 'department': '',
                 'integration_timestamp': datetime.utcnow().isoformat(),
                 'data_version': 'v1.1'
@@ -67,7 +67,7 @@ if __name__ == "__main__":
         "form_id": "form-abc",
         "form_title": "採用アンケート",
         "submitted_at": "2026-02-12T10:30:00Z",
-        "respondent_email": "test@client-tech.test",
+        "respondent_email": "test@gmo-tech.test",
         "responses": [
             {
                 "question_id": "q1",

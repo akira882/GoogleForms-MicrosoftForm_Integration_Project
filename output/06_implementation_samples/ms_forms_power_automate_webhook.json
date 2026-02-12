@@ -75,7 +75,7 @@
             "respondent_email": "@{body('Parse_JSON')?['responder']}",
             "responses": "@{body('Parse_JSON')?['questions']}",
             "metadata": {
-              "company": "Client_COMPANY_NAME",
+              "company": "GMO_TECH",
               "department": "",
               "integration_timestamp": "@{utcNow()}"
             }
