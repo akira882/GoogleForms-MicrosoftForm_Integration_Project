@@ -419,7 +419,7 @@ graph TB
 
 **⚡ ClientグループのM&A統合を2週間で実現 ⚡**
 
-Made with ❤️ by Claude Code (Sonnet 4.5)
+Strategic Architecture by 小清水（Akira Koshimizu） | Accenture Song 流・戦略的業務変革ロードマップ
 
 [⬆ トップに戻る](#)
 

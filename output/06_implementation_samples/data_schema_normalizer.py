@@ -66,7 +66,16 @@ if __name__ == "__main__":
         "response_id": "google-123",
         "form_id": "form-abc",
         "form_title": "採用アンケート",
+        "submitted_at": "2026-02-12T10:30:00Z",
         "respondent_email": "test@client-tech.test",
-        "responses": [{"q": "志望動機", "a": "AI活用に惹かれました"}]
+        "responses": [
+            {
+                "question_id": "q1",
+                "question_text": "志望動機",
+                "answer": "AI活用に惹かれました",
+                "question_type": "text"
+            }
+        ],
+        "metadata": {"company": "Client"}
     }
     print(json.dumps(normalizer.normalize_google_forms(sample_data), indent=2, ensure_ascii=False))

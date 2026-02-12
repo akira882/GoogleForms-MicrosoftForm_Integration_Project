@@ -54,6 +54,8 @@ class ClaudeNormalizer:
             messages=[{"role": "user", "content": prompt}]
         )
         
+        return message.content[0].text.strip()
+        
     def detect_inconsistencies(self, data: Dict[str, Any]) -> List[str]:
         """データ内の論理的矛盾を検知（例：郵便番号型と住所の不一致）"""
         prompt = f"""

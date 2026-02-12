@@ -12,7 +12,7 @@
 - ✅ データを統一スキーマに変換
 - ✅ ローカルで動作確認
 
-**注:** 完全な実装は [IMPLEMENTATION_GUIDE.md](./IMPLEMENTATION_GUIDE.md) を参照してください。
+**注:** 完全な実装は [PROPOSAL_FOR_HIRING_MANAGER.md](./PROPOSAL_FOR_HIRING_MANAGER.md) を参照してください。
 
 ---
 
@@ -103,12 +103,12 @@ python output/06_implementation_samples/google_forms_api_connector.py \
     "form_id": "1A2B3C4D5E6F",
     "form_title": "テスト応募フォーム",
     "submitted_at": "2026-02-12T10:30:00Z",
-    "respondent_email": "test@example.com",
+    "respondent_email": "test@client-tech.test",
     "responses": [
       {
         "question_id": "q1",
         "question_text": "お名前",
-        "answer": "山田太郎",
+        "answer": "佐藤 次郎",
         "question_type": "text"
       }
     ],
@@ -174,7 +174,7 @@ pip install -r requirements.txt
 
 クイックスタートで動作確認ができたら、Phase 1の完全実装に進んでください。
 
-1. [IMPLEMENTATION_GUIDE.md](./IMPLEMENTATION_GUIDE.md) - Day 1〜30の詳細手順
+1. [PROPOSAL_FOR_HIRING_MANAGER.md](./PROPOSAL_FOR_HIRING_MANAGER.md) - 戦略的ロードマップ
 2. [CHECKLIST.md](./CHECKLIST.md) - 進捗管理用チェックリスト
 
 ### Microsoft Forms 統合
@@ -217,9 +217,9 @@ A: 月間1TBクエリ、10GBストレージまで無料です。Phase 2の想定
 
 ---
 
-**次のステップ:** [IMPLEMENTATION_GUIDE.md](./IMPLEMENTATION_GUIDE.md) で完全実装を開始してください。
+**次のステップ:** [PROPOSAL_FOR_HIRING_MANAGER.md](./PROPOSAL_FOR_HIRING_MANAGER.md) で戦略的ロードマップを確認してください。
 
 ---
 
 **最終更新:** 2026-02-12  
-**作成者:** Claude Code (Sonnet 4.5)
+**作成者:** 小清水（Akira Koshimizu） | Accenture Song 流・戦略的統合ロードマップ
