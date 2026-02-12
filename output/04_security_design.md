@@ -447,5 +447,5 @@ WHERE
 ---
 
 **作成日:** 2026-02-12
-**作成者:** 小清水（Akira Koshimizu） | Accenture Song 流・戦略的統合ロードマップ
+**作成者:** 小清水 晶｜Akira Koshimizu
 **バージョン:** v1.0

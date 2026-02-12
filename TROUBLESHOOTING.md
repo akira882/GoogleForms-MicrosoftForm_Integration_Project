@@ -323,4 +323,4 @@ jst_time = datetime.fromisoformat(submitted_at).astimezone(jst)
 ---
 
 **最終更新:** 2026-02-12  
-**作成者:** 小清水（Akira Koshimizu） | Accenture Song 流・戦略的業務変革ロードマップ
+**作成者:** 小清水 晶｜Akira Koshimizu

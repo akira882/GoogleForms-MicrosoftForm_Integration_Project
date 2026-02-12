@@ -419,7 +419,7 @@ graph TB
 
 **⚡ ClientグループのM&A統合を2週間で実現 ⚡**
 
-Strategic Architecture by 小清水（Akira Koshimizu） | Accenture Song 流・戦略的業務変革ロードマップ
+Strategic Architecture by 小清水 晶｜Akira Koshimizu
 
 [⬆ トップに戻る](#)
 

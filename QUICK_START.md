@@ -222,4 +222,4 @@ A: 月間1TBクエリ、10GBストレージまで無料です。Phase 2の想定
 ---
 
 **最終更新:** 2026-02-12  
-**作成者:** 小清水（Akira Koshimizu） | Accenture Song 流・戦略的統合ロードマップ
+**作成者:** 小清水 晶｜Akira Koshimizu
