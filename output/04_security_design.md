@@ -269,7 +269,21 @@ audit_log_schema:
 | スキーマ変更ログ | 永久保存 | Cloud Storage | データエンジニア + 監査部門 |
 | ログインログ | 1年 | Clientトラスト・ログイン | セキュリティ部門 |
 
-### 5.3 異常検知アラート
+### 5.3 データ・リネージ（データの系譜）とトレーサビリティ
+
+世界最高峰のガバナンスを実現するため、データの発生源から最終的なレポートまでを追跡する「リネージ設計」を導入します。
+
+| ステップ | 担当システム | 記録されるメタデータ | 目的 |
+| :------- | :----------- | :------------------- | :--- |
+| **Origin** | Forms (Google/MS) | Source ID, Form Type, App Version | オリジナルの真正性確保 |
+| **Transit** | iPaaS (Make/PA) | Processed Timestamp, Execution ID | パイプラインの正常性監視 |
+| **Normal** | Python Normalizer | Schema Version, Logic Commit Hash | 変換ロジックの透明性確保 |
+| **Storage** | BigQuery | Ingestion Time, User Permissions | 保存データの信頼性確保 |
+| **Action** | Looker Studio | View Timestamp, Filter Context | 意思決定の根拠追跡 |
+
+これにより、もしAIが誤った修正（正規化）を行った場合でも、**「どのモデルが、どのバージョンのロジックで、どのログを書き換えたか」**を1秒以内に特定できるレジリエンス（回復力）を実現します。
+
+### 5.4 異常検知アラート
 
 ```python
 # 異常検知ルール（Cloud Monitoringで設定）

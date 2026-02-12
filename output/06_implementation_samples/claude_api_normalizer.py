@@ -54,10 +54,33 @@ class ClaudeNormalizer:
             messages=[{"role": "user", "content": prompt}]
         )
         
-        return message.content[0].text.strip()
+    def detect_inconsistencies(self, data: Dict[str, Any]) -> List[str]:
+        """データ内の論理的矛盾を検知（例：郵便番号型と住所の不一致）"""
+        prompt = f"""
+以下のフォーム回答データ内に論理的な矛盾や不整合、あるいは明らかな虚偽の可能性がある箇所があれば指摘してください。
+矛盾がない場合は空のリストを返してください。
+
+データ:
+{json.dumps(data, ensure_ascii=False, indent=2)}
+
+出力形式:
+["矛盾点1", "矛盾点2"]
+"""
+        
+        message = self.client.messages.create(
+            model="claude-3-5-sonnet-20241022",
+            max_tokens=200,
+            messages=[{"role": "user", "content": prompt}]
+        )
+        
+        try:
+            return json.loads(message.content[0].text.strip())
+        except:
+            return [message.content[0].text.strip()]
 
 if __name__ == "__main__":
     # 使用例（APIキーを設定して実行）
     # normalizer = ClaudeNormalizer(api_key="your-api-key-here")
-    # print(normalizer.normalize_company_name("Client(株)"))
-    print("APIキーを設定すると、AIによる自動正規化が実行可能です。")
+    # sample = {"zip": "150-0001", "address": "大阪府大阪市..."}
+    # print(normalizer.detect_inconsistencies(sample))
+    print("APIキーを設定すると、AIによる高度な矛盾検知（Semantic Validation）が実行可能です。")
