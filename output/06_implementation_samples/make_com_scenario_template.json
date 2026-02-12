@@ -1,0 +1,154 @@
+{
+  "name": "GMO M&A Enterprise Integration Template v1.0",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:Webhook",
+      "version": 1,
+      "parameters": {
+        "hookName": "ms_forms_webhook"
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 2,
+      "module": "util:SetVariable",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "name": "unified_data",
+        "value": {
+          "response_id": "{{1.response_id}}",
+          "form_source": "{{1.form_source}}",
+          "form_id": "{{1.form_id}}",
+          "form_title": "{{1.form_title}}",
+          "submitted_at": "{{1.submitted_at}}",
+          "respondent_email": "{{1.respondent_email}}",
+          "responses": "{{1.responses}}",
+          "metadata": {
+            "company": "GMO_COMPANY_NAME_VARIABLE",
+            "department": "",
+            "integration_timestamp": "{{now}}",
+            "data_version": "v1.1"
+          }
+        }
+      },
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 3,
+      "module": "google-sheets:addRow",
+      "version": 3,
+      "parameters": {
+        "spreadsheetId": "YOUR_GOOGLE_SHEETS_ID",
+        "sheetId": "unified_form_responses",
+        "tableFirstRow": "A1:H1",
+        "includesHeaders": true,
+        "valueInputOption": "USER_ENTERED",
+        "insertDataOption": "INSERT_ROWS"
+      },
+      "mapper": {
+        "0": "{{2.unified_data.response_id}}",
+        "1": "{{2.unified_data.form_source}}",
+        "2": "{{2.unified_data.form_id}}",
+        "3": "{{2.unified_data.form_title}}",
+        "4": "{{2.unified_data.submitted_at}}",
+        "5": "{{2.unified_data.respondent_email}}",
+        "6": "{{toString(2.unified_data.responses)}}",
+        "7": "{{toString(2.unified_data.metadata)}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 600,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 4,
+      "module": "slack:sendMessage",
+      "version": 1,
+      "parameters": {
+        "channel": "#gmo-form-integration-alerts"
+      },
+      "mapper": {
+        "text": "✅ New form response integrated successfully!\nForm: {{2.unified_data.form_title}}\nCompany: {{2.unified_data.metadata.company}}\nResponse ID: {{2.unified_data.response_id}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 900,
+          "y": 0
+        }
+      },
+      "filter": {
+        "name": "Only on success",
+        "conditions": [
+          [
+            {
+              "a": "{{3.status}}",
+              "o": "equal",
+              "b": "success"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "module": "slack:sendMessage",
+      "version": 1,
+      "parameters": {
+        "channel": "#gmo-form-integration-alerts"
+      },
+      "mapper": {
+        "text": "⚠️ Error integrating form response!\nForm: {{2.unified_data.form_title}}\nError: {{3.error.message}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 900,
+          "y": 300
+        },
+        "restore": {}
+      },
+      "filter": {
+        "name": "Only on error",
+        "conditions": [
+          [
+            {
+              "a": "{{3.status}}",
+              "o": "equal",
+              "b": "error"
+            }
+          ]
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": false,
+      "sequential": false,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "asia-northeast1"
+  }
+}

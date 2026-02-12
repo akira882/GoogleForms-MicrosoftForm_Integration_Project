@@ -1,0 +1,102 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "When_a_new_response_is_submitted": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['microsoftforms']['connectionId']"
+            }
+          },
+          "path": "/formapi/api/forms/@{encodeURIComponent('YOUR_FORM_ID')}/responses"
+        }
+      }
+    },
+    "actions": {
+      "Get_response_details": {
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['microsoftforms']['connectionId']"
+            }
+          },
+          "method": "get",
+          "path": "/formapi/api/forms/@{encodeURIComponent('YOUR_FORM_ID')}/responses/@{encodeURIComponent(triggerOutputs()?['body/resourceData/responseId'])}"
+        },
+        "runAfter": {}
+      },
+      "Parse_JSON": {
+        "type": "ParseJson",
+        "inputs": {
+          "content": "@body('Get_response_details')",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string"},
+              "title": {"type": "string"},
+              "submitDate": {"type": "string"},
+              "responder": {"type": "string"},
+              "questions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "questionId": {"type": "string"},
+                    "questionText": {"type": "string"},
+                    "answer": {"type": "string"}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "runAfter": {
+          "Get_response_details": ["Succeeded"]
+        }
+      },
+      "HTTP_POST_to_Make_com": {
+        "type": "Http",
+        "inputs": {
+          "method": "POST",
+          "uri": "https://hook.make.com/YOUR_WEBHOOK_ID",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "form_source": "ms_forms",
+            "form_id": "@{body('Parse_JSON')?['id']}",
+            "form_title": "@{body('Parse_JSON')?['title']}",
+            "submitted_at": "@{body('Parse_JSON')?['submitDate']}",
+            "respondent_email": "@{body('Parse_JSON')?['responder']}",
+            "responses": "@{body('Parse_JSON')?['questions']}",
+            "metadata": {
+              "company": "GMO_COMPANY_NAME",
+              "department": "",
+              "integration_timestamp": "@{utcNow()}"
+            }
+          }
+        },
+        "runAfter": {
+          "Parse_JSON": ["Succeeded"]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "parameters": {
+    "$connections": {
+      "value": {
+        "microsoftforms": {
+          "connectionId": "/subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/YOUR_RESOURCE_GROUP/providers/Microsoft.Web/connections/microsoftforms",
+          "connectionName": "microsoftforms",
+          "id": "/subscriptions/YOUR_SUBSCRIPTION_ID/providers/Microsoft.Web/locations/YOUR_LOCATION/managedApis/microsoftforms"
+        }
+      }
+    }
+  }
+}

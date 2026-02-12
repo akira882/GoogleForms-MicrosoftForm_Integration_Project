@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+"""
+統一スキーマ変換スクリプト
+
+Google FormsとMicrosoft Formsのデータを統一スキーマv1.1に変換します。
+"""
+
+import json
+import uuid
+from datetime import datetime
+from typing import Dict, Any
+
+class SchemaData Normalizer:
+    """統一スキーマ変換クラス"""
+    
+    @staticmethod
+    def normalize_google_forms(data: Dict[str, Any]) -> Dict[str, Any]:
+        """Google Formsデータを統一スキーマに変換"""
+        return {
+            'response_id': data.get('response_id', str(uuid.uuid4())),
+            'form_source': 'google_forms',
+            'form_id': data.get('form_id', ''),
+            'form_title': data.get('form_title', ''),
+            'submitted_at': data.get('submitted_at', datetime.utcnow().isoformat()),
+            'respondent_email': data.get('respondent_email', ''),
+            'responses': data.get('responses', []),
+            'metadata': {
+                'company': data.get('metadata', {}).get('company', 'GMO Tech'),
+                'department': data.get('metadata', {}).get('department', ''),
+                'integration_timestamp': datetime.utcnow().isoformat(),
+                'data_version': 'v1.1'
+            }
+        }
+    
+    @staticmethod
+    def normalize_ms_forms(data: Dict[str, Any]) -> Dict[str, Any]:
+        """Microsoft Formsデータを統一スキーマに変換"""
+        return {
+            'response_id': str(uuid.uuid4()),
+            'form_source': 'ms_forms',
+            'form_id': data.get('id', ''),
+            'form_title': data.get('title', ''),
+            'submitted_at': data.get('submitDate', datetime.utcnow().isoformat()),
+            'respondent_email': data.get('responder', ''),
+            'responses': [
+                {
+                    'question_id': q.get('questionId', ''),
+                    'question_text': q.get('questionText', ''),
+                    'answer': q.get('answer', ''),
+                    'question_type': 'text'  # MS Formsは型判定が困難
+                }
+                for q in data.get('questions', [])
+            ],
+            'metadata': {
+                'company': 'GMO Tech',
+                'department': '',
+                'integration_timestamp': datetime.utcnow().isoformat(),
+                'data_version': 'v1.1'
+            }
+        }

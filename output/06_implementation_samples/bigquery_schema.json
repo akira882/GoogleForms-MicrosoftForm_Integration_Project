@@ -1,0 +1,65 @@
+{
+  "schema": [
+    {
+      "name": "response_id",
+      "type": "STRING",
+      "mode": "REQUIRED",
+      "description": "一意のレスポンスID（UUID v4）"
+    },
+    {
+      "name": "form_source",
+      "type": "STRING",
+      "mode": "REQUIRED",
+      "description": "フォームの種類（google_forms または ms_forms）"
+    },
+    {
+      "name": "form_id",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "フォームの一意識別子"
+    },
+    {
+      "name": "form_title",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "フォームタイトル"
+    },
+    {
+      "name": "submitted_at",
+      "type": "TIMESTAMP",
+      "mode": "REQUIRED",
+      "description": "提出日時"
+    },
+    {
+      "name": "respondent_email_hash",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "回答者メールアドレス（SHA-256ハッシュ化）"
+    },
+    {
+      "name": "responses",
+      "type": "JSON",
+      "mode": "NULLABLE",
+      "description": "回答データ（JSON形式）"
+    },
+    {
+      "name": "metadata",
+      "type": "JSON",
+      "mode": "NULLABLE",
+      "description": "メタデータ（company, department等）"
+    },
+    {
+      "name": "_partition_date",
+      "type": "DATE",
+      "mode": "NULLABLE",
+      "description": "パーティションキー（submitted_atから自動生成）"
+    }
+  ],
+  "timePartitioning": {
+    "type": "DAY",
+    "field": "submitted_at"
+  },
+  "clustering": {
+    "fields": ["form_source", "metadata.company"]
+  }
+}
