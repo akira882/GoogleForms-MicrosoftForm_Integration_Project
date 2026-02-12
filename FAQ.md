@@ -225,7 +225,7 @@ Make.comを推奨する理由は、ノーコードで運用でき、コスト（
 このFAQで解決しない質問がある場合:
 
 1. [GitHub Issues](https://github.com/akira882/GoogleForms-MicrosoftForm_Integration_Project/issues) で質問
-2. Email: your-email@example.com
+2. Email: akira882@gmail.com
 3. [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) を確認
 
 ---

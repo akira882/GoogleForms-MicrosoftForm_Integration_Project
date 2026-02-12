@@ -164,7 +164,7 @@ class DataAnonymizer:
 anonymizer = DataAnonymizer()
 original_data = {
     "name": "山田太郎",
-    "email": "yamada@example.com",
+    "email": "sato@gmo-tech.test",
     "phone": "090-1234-5678",
     "address": "東京都渋谷区桜丘町1-1"
 }

@@ -10,7 +10,7 @@ import uuid
 from datetime import datetime
 from typing import Dict, Any
 
-class SchemaData Normalizer:
+class SchemaDataNormalizer:
     """統一スキーマ変換クラス"""
     
     @staticmethod
@@ -58,3 +58,15 @@ class SchemaData Normalizer:
                 'data_version': 'v1.1'
             }
         }
+
+if __name__ == "__main__":
+    # 使用例
+    normalizer = SchemaDataNormalizer()
+    sample_data = {
+        "response_id": "google-123",
+        "form_id": "form-abc",
+        "form_title": "採用アンケート",
+        "respondent_email": "test@gmo-tech.test",
+        "responses": [{"q": "志望動機", "a": "AI活用に惹かれました"}]
+    }
+    print(json.dumps(normalizer.normalize_google_forms(sample_data), indent=2, ensure_ascii=False))

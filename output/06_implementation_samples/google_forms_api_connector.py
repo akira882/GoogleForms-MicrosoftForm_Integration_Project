@@ -9,7 +9,7 @@ Requirements:
     pip install google-api-python-client google-auth google-auth-oauthlib
 
 Usage:
-    python google_forms_api_connector.py --form-id 1A2B3C4D5E6F --credentials /path/to/credentials.json
+    python google_forms_api_connector.py --form-id 1p-XXXXXXXXXXXX --credentials credentials.json
 """
 
 import argparse

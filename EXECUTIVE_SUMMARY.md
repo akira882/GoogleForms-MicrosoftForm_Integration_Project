@@ -180,9 +180,9 @@ Phase 3（6〜12ヶ月）: AI自動化
 
 ## 📞 お問い合わせ
 
-**プロジェクト責任者:** [担当者名]  
-**Email:** [your-email@example.com]  
-**GitHub:** [リポジトリURL]
+**プロジェクト責任者:** 小清水  
+**Email:** akira882@gmail.com  
+**GitHub:** https://github.com/akira882/GoogleForms-MicrosoftForm_Integration_Project
 
 ---
 

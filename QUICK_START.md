@@ -213,7 +213,7 @@ A: 月間1TBクエリ、10GBストレージまで無料です。Phase 2の想定
 
 1. [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) を確認
 2. [GitHub Issues](https://github.com/akira882/GoogleForms-MicrosoftForm_Integration_Project/issues) で報告
-3. Email: your-email@example.com
+3. Email: akira882@gmail.com
 
 ---
 

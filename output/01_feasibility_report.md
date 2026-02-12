@@ -405,7 +405,8 @@ CLUSTER BY form_source, metadata.company;
 # Claude API 自動マッピング例
 import anthropic
 
-client = anthropic.Anthropic(api_key="YOUR_API_KEY")
+# 環境変数または安全な場所から取得したAPIキーを設定してください
+client = anthropic.Anthropic(api_key="sk-ant-xxxxxxxxxxxxxx") # 本番環境では環境変数を使用
 
 def auto_map_question(question_text: str, standard_schema: list) -> str:
     """質問文を標準スキーマにマッピング"""

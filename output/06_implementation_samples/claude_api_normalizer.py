@@ -55,3 +55,9 @@ class ClaudeNormalizer:
         )
         
         return message.content[0].text.strip()
+
+if __name__ == "__main__":
+    # 使用例（APIキーを設定して実行）
+    # normalizer = ClaudeNormalizer(api_key="your-api-key-here")
+    # print(normalizer.normalize_company_name("GMOﾃｯｸ(株)"))
+    print("APIキーを設定すると、AIによる自動正規化が実行可能です。")

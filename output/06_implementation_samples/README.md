@@ -14,32 +14,46 @@
 | `make_com_scenario_template.json` | Make.comシナリオテンプレート | Phase 1 |
 | `anonymizer.py` | 個人情報匿名化 | Phase 3 |
 
-## セットアップ
+## セットアップとカスタマイズ
 
+### 1. 依存パッケージのインストール
 ```bash
-# 依存パッケージのインストール
 pip install -r ../requirements.txt
 ```
 
-## 使用例
+### 2. 環境設定（プレースホルダーの置換）
+以下のファイルに含まれる `YOUR_...` という記述は、環境に合わせて書き換える必要があります。
 
+*   **`ms_forms_power_automate_webhook.json`**:
+    *   `YOUR_FORM_ID`: Microsoft FormsのURLに含まれるID
+    *   `YOUR_WEBHOOK_ID`: Make.comのWebhookモジュールで発行されたURLの末尾
+    *   `YOUR_SUBSCRIPTION_ID`: Azure サブスクリプションID
+*   **`make_com_scenario_template.json`**:
+    *   `YOUR_GOOGLE_SHEETS_ID`: 書き込み先スプレッドシートのURLから取得
+*   **`google_forms_api_connector.py`**:
+    *   実行時に `--form-id` と `--credentials` を指定
+
+### 3. 実行方法
+
+#### Google Formsからのデータ取得例
 ```bash
-# Google Forms APIでデータ取得
 python google_forms_api_connector.py \
   --form-id 1A2B3C4D5E6F \
-  --credentials /path/to/credentials.json
-
-# 個人情報の匿名化
-python anonymizer.py --input data.json --output anonymized.json
+  --credentials credentials.json
 ```
 
-## 注意事項
+#### スキーマ正規化テスト
+```bash
+python data_schema_normalizer.py
+```
 
-- 本番環境で使用する前に、必ずテスト環境で動作確認してください
-- APIキーや認証情報は `.env` ファイルで管理し、Gitにコミットしないでください
-- 個人情報保護法に準拠した運用を行ってください
+## セキュリティ・コンプライアンス上の注意
+
+- **認証情報の管理**: APIキーやサービスアカウント鍵は絶対にリポジトリに含めないでください。環境変数（`.env`）の使用を強く推奨します。
+- **匿名化の徹底**: 公共のAI（Claude API等）にデータを送信する際は、必ず `anonymizer.py` を使用して個人情報を不可逆なハッシュ値に変換してください。
+- **GMOグループ基準**: 実際の導入にあたっては、GMO Techセキュリティ委員会のガイドラインに従った設定を行ってください。
 
 ---
 
-**作成日:** 2026-02-12
-**バージョン:** v1.0
+**最終更新:** 2026-02-12  
+**作成者:** 小清水（Akira Koshimizu）
