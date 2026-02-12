@@ -1,0 +1,30 @@
+# Google Cloud関連
+google-api-python-client==2.128.0
+google-auth-httplib2==0.2.0
+google-auth-oauthlib==1.2.0
+
+# BigQuery関連
+google-cloud-bigquery==3.21.0
+
+# Claude API（Anthropic SDK）
+anthropic==0.25.1
+
+# データ処理
+pandas==2.2.1
+numpy==1.26.4
+
+# HTTP通信
+requests==2.31.0
+
+# 環境変数管理
+python-dotenv==1.0.1
+
+# JSON処理
+jsonschema==4.21.1
+
+# 匿名化・暗号化
+cryptography==42.0.5
+faker==24.3.0
+
+# テスト用
+pytest==8.1.1
